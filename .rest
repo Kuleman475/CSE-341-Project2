@@ -1,4 +1,17 @@
-GET http://localhost:8888/user/ HTTP/1.1
+###
+GET http://localhost:8888/user/664cbd74397f53674219595f HTTP/1.1
 
 ###
 GET http://localhost:8888/film/films HTTP/1.1
+
+### Create New film
+POST http://localhost:8888/film/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Avengers: End Game",
+    "genre": "Action/Adventure",
+    "rating": "PG-13",
+    "length": "3 Hours 2 Minutes",
+    "year": "2019"
+}

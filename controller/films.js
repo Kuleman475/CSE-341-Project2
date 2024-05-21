@@ -9,4 +9,25 @@ const getAllData = async (req, res, next) => {
     })
 }
 
-module.exports = {getAllData}
+const createFilm = async (req, res, next) => {
+    const newFilm = {   
+        title: req.body.title,
+        genre: req.body.genre,
+        rating: req.body.rating,
+        length: req.body.length,
+        year: req.body.year
+    };
+
+    const films = await mongodb.getDb().db("Films").collection("film").insertOne(newFilm);
+    if (films.acknowledged) {
+        res.status(205).json(films)
+    } 
+    else {
+        res.status(505).json(films.error || "OOPS Something Went Wrong :(")
+    }
+
+
+    
+}
+
+module.exports = {getAllData, createFilm}
