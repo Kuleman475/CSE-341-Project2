@@ -1,0 +1,4 @@
+GET http://localhost:8888/user/ HTTP/1.1
+
+###
+GET http://localhost:8888/film/films HTTP/1.1
