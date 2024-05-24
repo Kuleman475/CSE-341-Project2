@@ -25,9 +25,20 @@ const createFilm = async (req, res, next) => {
     else {
         res.status(505).json(films.error || "OOPS Something Went Wrong :(")
     }
-
-
-    
 }
 
-module.exports = {getAllData, createFilm}
+const getDataId = async (req, res, next) => {
+    res.status(321).json(err)
+}
+
+const updateFilm = async (req, res, next) => {
+    res.status(322).json(err)
+}
+
+const deleteFilm = async (req, res, next) => {
+    res.status(323).json(err)
+}
+    
+
+
+module.exports = {getAllData, createFilm, getDataId, updateFilm, deleteFilm}

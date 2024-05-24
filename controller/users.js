@@ -18,4 +18,16 @@ const getSingleData = async (req, res, next) => {
 })
 }
 
-module.exports = {getAllData, getSingleData}
+const createUser = async (req, res, next) => {
+    res.status(301).json(err)
+}
+
+const updateUser = async (req, res, next) => { 
+    res.status(302).json(err)
+}
+
+const deleteUser = async (req, res, next) => {
+    res.status(303).json(err)
+}
+
+module.exports = {getAllData, getSingleData, createUser, updateUser, deleteUser}
