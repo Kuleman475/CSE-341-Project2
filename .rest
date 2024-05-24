@@ -2,16 +2,18 @@
 GET http://localhost:8888/user/664cbd74397f53674219595f HTTP/1.1
 
 ###
-GET http://localhost:8888/film/films HTTP/1.1
+GET http://localhost:8888/user/user HTTP/1.1
 
 ### Create New film
-POST http://localhost:8888/film/create HTTP/1.1
+POST http://localhost:8888/user/create/user HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Avengers: End Game",
-    "genre": "Action/Adventure",
-    "rating": "PG-13",
-    "length": "3 Hours 2 Minutes",
-    "year": "2019"
+        "username": "1forrest1",
+        "password": "oneforrest1",
+        "firstName": "Forrest",
+        "lastName": "Gump",
+        "email": "Fgump@hotmail.com",
+        "birthday": "05/20/1960",
+        "favoriteGenre": "Adventure"
 }

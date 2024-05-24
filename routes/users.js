@@ -11,7 +11,7 @@ routes.get("/user", userController.getAllData);
 
 routes.get("/user/:id", userController.getSingleData);
 
-routes.post("/create/user", userController.createUser);
+routes.post('/create/user', userController.createUser);
 
 routes.put("/update/user/:id", userController.updateUser);
 

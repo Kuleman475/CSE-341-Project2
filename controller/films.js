@@ -20,7 +20,7 @@ const createFilm = async (req, res, next) => {
 
     const films = await mongodb.getDb().db("Films").collection("film").insertOne(newFilm);
     if (films.acknowledged) {
-        res.status(205).json(films)
+        res.status(205).json(films);
     } 
     else {
         res.status(505).json(films.error || "OOPS Something Went Wrong :(")
