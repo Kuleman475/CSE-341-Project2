@@ -58,9 +58,44 @@
     "/user/create/user": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "favoriteGenre": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "301": {
-            "description": "Moved Permanently"
+          "205": {
+            "description": "Reset Content"
+          },
+          "505": {
+            "description": "HTTP Version Not Supported"
           }
         }
       }
