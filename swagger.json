@@ -5,10 +5,10 @@
     "description": "Films",
     "version": "1.0.0"
   },
-  "host": "localhost:8888",
+  "host": "https://cse-341-project2-zayd.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/user": {
+    "/user/user": {
       "get": {
         "description": "",
         "produces": [
@@ -34,7 +34,7 @@
         }
       }
     },
-    "/user/{id}": {
+    "/user/user/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -55,7 +55,7 @@
         }
       }
     },
-    "/create/user": {
+    "/user/create/user": {
       "post": {
         "description": "",
         "responses": {
@@ -65,7 +65,7 @@
         }
       }
     },
-    "/update/user/{id}": {
+    "/user/update/user/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -83,7 +83,7 @@
         }
       }
     },
-    "/delete/user/{id}": {
+    "/user/delete/user/{id}": {
       "delete": {
         "description": "",
         "parameters": [
@@ -101,7 +101,7 @@
         }
       }
     },
-    "/films": {
+    "/film/films": {
       "get": {
         "description": "",
         "produces": [
@@ -114,7 +114,7 @@
         }
       }
     },
-    "/create/film": {
+    "/film/create/film": {
       "post": {
         "description": "",
         "parameters": [
@@ -153,7 +153,7 @@
         }
       }
     },
-    "/film/{id}": {
+    "/film/film/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -171,7 +171,7 @@
         }
       }
     },
-    "/update/film/{id}": {
+    "/film/update/film/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -189,7 +189,7 @@
         }
       }
     },
-    "delete/film/{id}": {
+    "/film/delete/film/{id}": {
       "delete": {
         "description": "",
         "parameters": [
