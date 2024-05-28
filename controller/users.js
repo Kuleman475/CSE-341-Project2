@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const mongodb = require("../db/connect");
 const objectId = require("mongodb").ObjectId;
 
@@ -39,11 +40,37 @@ const createUser = async (req, res, next) => {
 }
 
 const updateUser = async (req, res, next) => { 
-    res.status(302).json(err);
+    const userId = new ObjectId(req.params.id);
+
+    const updateUser = {
+        username: req.body.username,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        birthday: req.body.birthday,
+        favoriteGenre: req.body.favoriteGenre
+    }
+
+    const user = await mongodb.getDb().db("Films").collection("user").replaceOne({ _id: userId}, updateUser);
+    if (user.acknowledged) {
+        res.status(206).json(user);
+    }   
+    else {
+        res.status(506).json(user.error || "Failed to update user" )
+    }
 }
 
 const deleteUser = async (req, res, next) => {
-    res.status(303).json(err);
+    const userId = new ObjectId(req.params.id);
+
+    const user = await mongodb.getDb().db("Films").collection("user").deleteOne({ _id: userId });
+    if (user.acknowledged) {
+        res.status(207).json(user);
+    }
+    else {
+        res.status(507).json(user.error || "Couldn't delete user")
+    }
 }
 
 module.exports = {getAllData, getSingleData, createUser, updateUser, deleteUser}

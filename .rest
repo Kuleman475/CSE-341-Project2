@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8888/user/664cbd74397f53674219595f HTTP/1.1
+GET http://localhost:8888/user/user/664c84dd397f53674219595e HTTP/1.1
 
 ###
 GET http://localhost:8888/user/user HTTP/1.1
@@ -17,3 +17,20 @@ Content-Type: application/json
         "birthday": "05/20/1960",
         "favoriteGenre": "Adventure"
 }
+
+###
+PUT http://localhost:8888/user/update/user/6655ffffda0ee723047823c1 HTTP/1.1
+Content-Type: application/json
+
+{
+        "username": "1forrest1",
+        "password": "oneforrest1",
+        "firstName": "Forrest",
+        "lastName": "Gump",
+        "email": "gumpForrest@hotmail.com",
+        "birthday": "05/20/1960",
+        "favoriteGenre": "Adventure"
+}
+
+###
+DELETE http://localhost:8888/user/delete/user/6656052bdbf17ecdf7854e5e HTTP/1.1
