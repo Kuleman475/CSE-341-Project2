@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const mongodb = require("../db/connect");
 // const objectId = require("mongodb").ObjectId;
 
@@ -28,15 +29,47 @@ const createFilm = async (req, res, next) => {
 }
 
 const getDataId = async (req, res, next) => {
-    res.status(321).json(err)
+    const filmId = new ObjectId(req.params.id);
+
+    const film = await mongodb.getDb().db("Films").collection("film").find({ _id: filmId });
+    film.toArray().then((list) => {
+        res.setHeader("Content-Type", "application/json")
+        res.status(206).json(film);
+    })
 }
 
 const updateFilm = async (req, res, next) => {
-    res.status(322).json(err)
+    const filmId = new ObjectId(req.params.id);
+
+    const updatedFilm = {
+        title: req.body.title,
+        genre: req.body.genre,
+        rating: req.body.rating,
+        length: req.body.length,
+        year: req.body.year
+    }
+
+    const updated = await mongodb.getDb().db("Films").collection("film").replaceOne({_id: filmId}, updatedFilm);
+
+    if (updated.acknowledged) {
+        res.status(208).json(updated);
+    }
+    else {
+        res.status(509).json(updated.err || "Couldn't update film");
+    }
 }
 
 const deleteFilm = async (req, res, next) => {
-    res.status(323).json(err)
+    const filmId = new ObjectId(req.params.id);
+
+    const deleteFilm = await mongodb.getDb().db("Films").collection("film").removeOne({_id: filmId})
+
+    if (deleteFilm.acknowledged){
+        res.status(209).json(deleteFilm);
+    }
+    else {
+        res.status(509).json(deleteFilm.err || "Couldn't delete film");
+    }
 }
     
 

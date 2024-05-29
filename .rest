@@ -34,3 +34,17 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:8888/user/delete/user/6656052bdbf17ecdf7854e5e HTTP/1.1
+
+###
+GET http://localhost:8888/film/films HTTP/1.1
+
+POST http://localhost:8888/film/create/film HTTP/1.1
+Content-Type: application/json
+
+{
+        "title": "Bee Movie",
+    "genre": "family",
+    "rating": "PG",
+    "length": "91 Minutes",
+    "year": "2007"
+}
