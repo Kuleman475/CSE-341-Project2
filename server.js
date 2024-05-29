@@ -1,4 +1,4 @@
-var express = require("express");
+var express = require('express');
 var mongodbClient = require('mongodb');
 var mongodb = require('./db/connect');
 var bodyParser = require('body-parser');
@@ -8,7 +8,6 @@ const swaggerDocument = require('./swagger.json');
 
 var app = express();
 const port = process.env.PORT || 8888;
-
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -32,4 +31,3 @@ mongodb.initDb((err, mongodb) => {
     });
   }
 });
-
