@@ -15,6 +15,6 @@ routes.get("/film/:id", filmsController.getDataId);
 
 routes.put("/update/film/:id", filmsController.updateFilm);
 
-routes.delete("delete/film/:id", filmsController.deleteFilm);
+routes.delete("/delete/film/:id", filmsController.deleteFilm);
 
 module.exports = routes;
