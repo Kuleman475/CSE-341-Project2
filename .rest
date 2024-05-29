@@ -48,3 +48,17 @@ Content-Type: application/json
     "length": "91 Minutes",
     "year": "2007"
 }
+
+###
+PUT http://localhost:8888/film/update/film/6656824fb4cfc082e4e0368c
+Content-Type: application/json
+
+{
+    "title": "Bee",
+    "genre": "fam",
+    "rating": "P",
+    "length": "9 Minutes",
+    "year": "2000"
+}
+###
+DELETE http://localhost:8888/film/delete/film/6656803834f58fd16943f2a7 HTTP/1.1

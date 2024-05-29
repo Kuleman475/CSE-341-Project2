@@ -33,8 +33,8 @@ const getDataId = async (req, res, next) => {
 
     const film = await mongodb.getDb().db("Films").collection("film").find({ _id: filmId });
     film.toArray().then((list) => {
-        res.setHeader("Content-Type", "application/json")
-        res.status(206).json(film);
+    res.setHeader("Content-Type", "application/json")
+    res.status(206).json(list);
     })
 }
 
@@ -62,7 +62,7 @@ const updateFilm = async (req, res, next) => {
 const deleteFilm = async (req, res, next) => {
     const filmId = new ObjectId(req.params.id);
 
-    const deleteFilm = await mongodb.getDb().db("Films").collection("film").removeOne({_id: filmId})
+    const deleteFilm = await mongodb.getDb().db("Films").collection("film").deleteOne({_id: filmId})
 
     if (deleteFilm.acknowledged){
         res.status(209).json(deleteFilm);
