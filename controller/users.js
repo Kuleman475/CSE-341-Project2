@@ -47,6 +47,11 @@ const createUser = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
+
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
+
   const userId = new ObjectId(req.params.id);
 
   const updateUser = {
@@ -72,6 +77,11 @@ const updateUser = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
+
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
+  
   const userId = new ObjectId(req.params.id);
 
   const user = await mongodb.getDb().db('Films').collection('user').deleteOne({ _id: userId });

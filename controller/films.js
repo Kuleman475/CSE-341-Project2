@@ -47,6 +47,9 @@ const getDataId = async (req, res, next) => {
 };
 
 const updateFilm = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
   const filmId = new ObjectId(req.params.id);
 
   const updatedFilm = {
@@ -71,6 +74,10 @@ const updateFilm = async (req, res, next) => {
 };
 
 const deleteFilm = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
+
   const filmId = new ObjectId(req.params.id);
 
   const deleteFilm = await mongodb
