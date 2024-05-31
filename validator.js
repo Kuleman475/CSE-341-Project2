@@ -1,51 +1,66 @@
-const { body, validationResult } = require('express-validator');
+const Validator = require('validatorjs');
+
+const validator = (body, rules, customMessages, callback) => {
+    const validation = new Validator(body, rules, customMessages);
+    validation.passes(() => callback(null, true));
+    validation.fails(() => callback(validation.errors, false));
+  };
 
 // USER VALIDATION
-const userValidationRules = () => {
-  return [
-    // username must be an email
-    body('username').isLength({ min: 8 }),
-    // password must be at least 5 chars long
-    body('password').isLength({ min: 5 }),
+const userValidate = (req, res, next) => {
+const userValidationRules = {
+    // username
+    username: 'required|string',
+    // password must be at least 7 characters long
+    password: 'required|string|min:7',
     // first name
-    body('firstName').isString(),
+    firstName: 'required|string',
     // last name
-    body('lastName').isString(),
+    lastName: 'required|string',
     // email must be an email
-    body('email').isEmail(),
+    email: 'required|email',
     // date must be in MM/DD/YYYY format
-    body('birthday').isDate(str, 'MM/DD/YYYY'),
+    birthday: 'required|string',
     // favorite genre
-    body('favoriteGenre').isString()
-  ];
-};
+    favoriteGenre: 'string',
+}
 
-//FILM VALIDATION
-const filmValidationRules = () => {
-  return [
-    body('title'),
-    body('genre').isString(),
-    body('rating').equals('G', 'PG', 'PG-13', 'PG 13', 'R'),
-    body('length').isInt(),
-    body('year').isInt({ min: 1888, max: 2029 })
-  ];
-};
-
-const validate = (req, res, next) => {
-  const errors = validationResult(req);
-  if (errors.isEmpty()) {
-    return next();
-  }
-  const extractedErrors = [];
-  errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
-
-  return res.status(422).json({
-    errors: extractedErrors
+  validator(req.body, userValidationRules, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
   });
 };
 
+//FILM VALIDATION
+const filmValidate = (req, res, next) => {
+const filmValidationRules = {
+    title: 'required|string',
+    genre: 'string',
+    rating: 'string',
+    length: 'integer',
+    year: 'required|string'
+};
+
+validator(req.body, filmValidationRules, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+}
 module.exports = {
-  userValidationRules,
-  filmValidationRules,
-  validate
+  userValidate,
+  filmValidate,
 };
