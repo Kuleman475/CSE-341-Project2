@@ -3,11 +3,18 @@ const mongodb = require('../db/connect');
 const objectId = require('mongodb').ObjectId;
 
 const getAllData = async (req, res, next) => {
-  const filmData = await mongodb.getDb().db('Films').collection('film').find();
-  filmData.toArray().then((list) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(207).json(list);
-  });
+  const filmData = await mongodb
+    .getDb()
+    .db('Films')
+    .collection('film')
+    .find()
+    .toArray((err, list) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(207).json(list);
+    });
 };
 
 const createFilm = async (req, res, next) => {
@@ -28,6 +35,10 @@ const createFilm = async (req, res, next) => {
 };
 
 const getDataId = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
+
   const filmId = new ObjectId(req.params.id);
 
   const film = await mongodb.getDb().db('Films').collection('film').find({ _id: filmId });

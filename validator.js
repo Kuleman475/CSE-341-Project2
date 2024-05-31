@@ -1,14 +1,14 @@
 const Validator = require('validatorjs');
 
 const validator = (body, rules, customMessages, callback) => {
-    const validation = new Validator(body, rules, customMessages);
-    validation.passes(() => callback(null, true));
-    validation.fails(() => callback(validation.errors, false));
-  };
+  const validation = new Validator(body, rules, customMessages);
+  validation.passes(() => callback(null, true));
+  validation.fails(() => callback(validation.errors, false));
+};
 
 // USER VALIDATION
 const userValidate = (req, res, next) => {
-const userValidationRules = {
+  const userValidationRules = {
     // username
     username: 'required|string',
     // password must be at least 7 characters long
@@ -22,8 +22,8 @@ const userValidationRules = {
     // date must be in MM/DD/YYYY format
     birthday: 'required|string',
     // favorite genre
-    favoriteGenre: 'string',
-}
+    favoriteGenre: 'string'
+  };
 
   validator(req.body, userValidationRules, {}, (err, status) => {
     if (!status) {
@@ -40,15 +40,15 @@ const userValidationRules = {
 
 //FILM VALIDATION
 const filmValidate = (req, res, next) => {
-const filmValidationRules = {
+  const filmValidationRules = {
     title: 'required|string',
     genre: 'string',
     rating: 'string',
     length: 'integer',
     year: 'required|string'
-};
+  };
 
-validator(req.body, filmValidationRules, {}, (err, status) => {
+  validator(req.body, filmValidationRules, {}, (err, status) => {
     if (!status) {
       res.status(412).send({
         success: false,
@@ -59,8 +59,8 @@ validator(req.body, filmValidationRules, {}, (err, status) => {
       next();
     }
   });
-}
+};
 module.exports = {
   userValidate,
-  filmValidate,
+  filmValidate
 };
