@@ -9,9 +9,7 @@ const getAllData = async (req, res, next) => {
     .collection('film')
     .find();
     filmData.toArray().then((list) => {
-      if (err) {
-        res.status(400).json("Oops something went wrong :(");
-      }
+
       res.setHeader('Content-Type', 'application/json');
       res.status(207).json(list);
     });

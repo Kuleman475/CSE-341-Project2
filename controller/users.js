@@ -5,9 +5,6 @@ const objectId = require('mongodb').ObjectId;
 const getAllData = async (req, res, next) => {
   const userInfo = await mongodb.getDb().db('Films').collection('user').find()
   userInfo.toArray().then((list) => {
-    if (err) {
-      res.status(400).json("Oops something went wrong :(");
-    }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(list);
   });
