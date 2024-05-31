@@ -7,10 +7,10 @@ const getAllData = async (req, res, next) => {
     .getDb()
     .db('Films')
     .collection('film')
-    .find()
-    .toArray((err, list) => {
+    .find();
+    filmData.toArray().then((list) => {
       if (err) {
-        res.status(400).json({ message: err });
+        res.status(400).json("Oops something went wrong :(");
       }
       res.setHeader('Content-Type', 'application/json');
       res.status(207).json(list);
