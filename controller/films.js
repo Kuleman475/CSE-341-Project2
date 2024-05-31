@@ -79,7 +79,7 @@ const deleteFilm = async (req, res, next) => {
     .collection('film')
     .deleteOne({ _id: filmId });
 
-  if (deleteFilm.acknowledged) {
+  if (deleteFilm.acknowledged > 0) {
     res.status(209).json(deleteFilm);
   } else {
     res.status(509).json(deleteFilm.err || "Couldn't delete film");

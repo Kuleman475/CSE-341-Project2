@@ -75,7 +75,7 @@ const deleteUser = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
 
   const user = await mongodb.getDb().db('Films').collection('user').deleteOne({ _id: userId });
-  if (user.acknowledged) {
+  if (user.acknowledged > 0) {
     res.status(207).json(user);
   } else {
     res.status(507).json(user.error || "Couldn't delete user");
