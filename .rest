@@ -63,3 +63,7 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8888/film/delete/film/6656803834f58fd16943f2a7 HTTP/1.1
+
+###
+POST https://github.com/login/oauth/access_token HTTP/1.1
+Accept: application/json
