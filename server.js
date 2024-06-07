@@ -20,6 +20,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/', require('./routes/login'));
+
 app.use('/user', require('./routes/users'));
 
 app.use('/film', require('./routes/films'));
@@ -33,6 +35,7 @@ mongodb.initDb((err, mongodb) => {
     });
   }
 });
+
 
 app.get('/auth', (req, res) => {
   res.redirect(

@@ -2,7 +2,7 @@
 GET http://localhost:8888/user/user/664c84dd397f53674219595e HTTP/1.1
 
 ###
-GET http://localhost:8888/user/user HTTP/1.1
+GET http://localhost:8888/login HTTP/1.1
 
 ### Create New film
 POST http://localhost:8888/user/create/user HTTP/1.1
