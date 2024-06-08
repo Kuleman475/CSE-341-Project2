@@ -55,13 +55,13 @@ const opts = { headers: { accept: 'application/json' } };
 
     axios
     .post('https://github.com/login/oauth/access_token', body, opts)
-    .then((response) => response.data.access_token) //response.data.access_token)
+    .then((response) => response.data.access_token)
     .then((token) => {
       // eslint-disable-next-line no-console
       console.log('My token:', token);
 
       if(token != "undefined"){
-        res.redirect(`/?token=${token}`).json("Congratulations you are authorized")
+        res.redirect(`/?token=${token}`)//.json("Congratulations you are authorized")
       }
     
       
