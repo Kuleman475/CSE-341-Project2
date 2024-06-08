@@ -61,7 +61,7 @@ const opts = { headers: { accept: 'application/json' } };
       console.log('My token:', token);
 
       if(token != "undefined"){
-        res.redirect(`/?token=${token}`)//.json("Congratulations you are authorized")
+        res.redirect(`/?token=${token}`).json("Congratulations you are authorized")
       }
     
       
