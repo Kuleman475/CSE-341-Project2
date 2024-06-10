@@ -7,18 +7,16 @@ const loginUser = async (req, res, next) => {
 
     const username = "thanos";
     const password = "6stones"
-
+    
    const login = await mongodb.getDb().db('Films').collection('user').find({ username: username, password: password });
    
    login.toArray().then((list) => {
     if (list.length == 0) {
         res.status(507).json("unable to login :(")
     }
-    console.log(list)
-    // res.setHeader('Content-Type', 'application/json');
-    // res.status(201).json("You are logged in");
-    res.redirect(`/success/api-docs`);
- });
+    else {
+    res.redirect(`/success/${username}/api-docs`);
+}});
 
  
 }

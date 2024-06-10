@@ -5,9 +5,9 @@ const swaggerDocument = require('../swagger.json');
 
 routes.get('/login', loginController.loginUser, );
 
-routes.use('/success/api-docs', swaggerUi.serve);
+routes.use('/success/:username/api-docs', swaggerUi.serve);
 
-routes.get('/success/api-docs', swaggerUi.setup(swaggerDocument));
+routes.get('/success/:username/api-docs', swaggerUi.setup(swaggerDocument));
 
 
 module.exports = routes;

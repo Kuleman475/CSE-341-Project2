@@ -1,7 +1,7 @@
 const routes = require('express').Router();
 const filmsController = require('../controller/films');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../swagger.json');
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerDocument = require('../swagger.json');
 const validation = require('../validator.js');
 
 // routes.use('/api-docs', swaggerUi.serve);

@@ -11,7 +11,7 @@ require('dotenv').config();
 var app = express();
 const port = process.env.PORT || 8888;
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(bodyParser.json());
 
