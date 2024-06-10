@@ -4,9 +4,9 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 const validation = require('../validator.js');
 
-routes.use('/api-docs', swaggerUi.serve);
+// routes.use('/api-docs', swaggerUi.serve);
 
-routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
+// routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 routes.get('/user', userController.getAllData);
 

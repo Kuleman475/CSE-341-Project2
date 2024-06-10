@@ -26,6 +26,7 @@ app.use('/user', require('./routes/users'));
 
 app.use('/film', require('./routes/films'));
 
+
 mongodb.initDb((err, mongodb) => {
   if (err) {
     console.log(err);
@@ -68,5 +69,4 @@ const opts = { headers: { accept: 'application/json' } };
     })
     .catch((err) => res.status(500).json({ err: err.message }));
 });
-
 

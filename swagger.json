@@ -5,11 +5,11 @@
     "description": "Films",
     "version": "1.0.0"
   },
-  "host": "cse-341-project2-zayd.onrender.com",
+  "host": "localhost:8888",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": ["http"],
   "paths": {
-    "/api-docs": {
+    "/success/api-docs": {
       "get": {
         "description": "",
         "responses": {
