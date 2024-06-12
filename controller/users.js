@@ -3,7 +3,7 @@ const mongodb = require('../db/connect');
 const objectId = require('mongodb').ObjectId;
 
 const getAllData = async (req, res, next) => {
-  const userInfo = await mongodb.getDb().db('Films').collection('user').find()
+  const userInfo = await mongodb.getDb().db('Films').collection('user').find();
   userInfo.toArray().then((list) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(list);
@@ -11,10 +11,9 @@ const getAllData = async (req, res, next) => {
 };
 
 const getSingleData = async (req, res, next) => {
-    
-    if (!ObjectId.isValid(req.params.id)) {
+  if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id to find user.');
-    }
+  }
 
   const userId = new objectId(req.params.id);
   const userInfo = await mongodb.getDb().db('Films').collection('user').find({ _id: userId });
@@ -26,7 +25,6 @@ const getSingleData = async (req, res, next) => {
 };
 
 const createUser = async (req, res, next) => {
-
   const newUser = {
     username: req.body.username,
     password: req.body.password,
@@ -37,7 +35,6 @@ const createUser = async (req, res, next) => {
     favoriteGenre: req.body.favoriteGenre
   };
 
-  
   const users = await mongodb.getDb().db('Films').collection('user').insertOne(newUser);
   if (users.acknowledged) {
     res.status(205).json(users);
@@ -47,7 +44,6 @@ const createUser = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
-
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id to find user.');
   }
@@ -77,7 +73,6 @@ const updateUser = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
-
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id to find user.');
   }

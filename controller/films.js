@@ -3,16 +3,11 @@ const mongodb = require('../db/connect');
 const objectId = require('mongodb').ObjectId;
 
 const getAllData = async (req, res, next) => {
-  const filmData = await mongodb
-    .getDb()
-    .db('Films')
-    .collection('film')
-    .find();
-    filmData.toArray().then((list) => {
-
-      res.setHeader('Content-Type', 'application/json');
-      res.status(207).json(list);
-    });
+  const filmData = await mongodb.getDb().db('Films').collection('film').find();
+  filmData.toArray().then((list) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(207).json(list);
+  });
 };
 
 const createFilm = async (req, res, next) => {
@@ -33,7 +28,6 @@ const createFilm = async (req, res, next) => {
 };
 
 const getDataId = async (req, res, next) => {
-
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid film id to find a film.');
   }
@@ -48,7 +42,6 @@ const getDataId = async (req, res, next) => {
 };
 
 const updateFilm = async (req, res, next) => {
-
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid film id to find a film.');
   }
@@ -77,7 +70,6 @@ const updateFilm = async (req, res, next) => {
 };
 
 const deleteFilm = async (req, res, next) => {
-
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid film id to find a film.');
   }

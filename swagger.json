@@ -287,6 +287,17 @@
           }
         }
       }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Logged out"
+          }
+        }
+      }
     }
   }
 }
