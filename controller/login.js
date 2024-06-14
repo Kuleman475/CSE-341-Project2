@@ -3,6 +3,8 @@ const mongodb = require('../db/connect');
 const objectId = require('mongodb').ObjectId;
 const readline = require('readline');
 
+
+
 const loginUser = async (req, res, next) => {
   const username = 'thanos';
   const password = '6stones';
@@ -21,6 +23,7 @@ const loginUser = async (req, res, next) => {
     }
   });
 };
+
 const logoutUser = async (req, res, next) => {
   res.status(202).json('Logged out succesfully');
 };

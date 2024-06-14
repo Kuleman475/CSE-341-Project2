@@ -1,6 +1,10 @@
 const { ObjectId } = require('mongodb');
 const mongodb = require('../db/connect');
 const objectId = require('mongodb').ObjectId;
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
 
 const getAllData = async (req, res, next) => {
   const userInfo = await mongodb.getDb().db('Films').collection('user').find();
@@ -73,6 +77,7 @@ const updateUser = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
+
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id to find user.');
   }
