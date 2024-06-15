@@ -5,9 +5,9 @@
     "description": "Films",
     "version": "1.0.0"
   },
-  "host": "localhost:8888",
+  "host": "cse-341-project2-zayd.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/user/user": {
       "get": {
