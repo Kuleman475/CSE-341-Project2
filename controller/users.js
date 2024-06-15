@@ -48,6 +48,7 @@ const createUser = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
+  
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id to find user.');
   }

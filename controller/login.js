@@ -8,6 +8,8 @@ const readline = require('readline');
 const loginUser = async (req, res, next) => {
   const username = 'thanos';
   const password = '6stones';
+  
+  const userId = new objectId(req.params.id);
 
   const login = await mongodb
     .getDb()
@@ -19,7 +21,7 @@ const loginUser = async (req, res, next) => {
     if (list.length == 0) {
       res.status(507).json('unable to login :(');
     } else {
-      res.redirect(`/success/${username}/api-docs`);
+      res.redirect(`/user/user/${list[0]._id}`);
     }
   });
 };
